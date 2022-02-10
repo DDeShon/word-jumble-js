@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: hsl(264, 100%, 70%);
+  background-color: hsl(264, 98%, 63%);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -31,10 +31,32 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: hsl(0, 0%, 64%);
-  /* color: white; */
+  background-color: hsl(
+    var(--hue, 0),
+    var(--saturation, 0%),
+    calc(var(--lightness-offset, 0%) + var(--lightness, 64%))
+  );
+  text-transform: uppercase;
+  border-radius: 0.25em;
+  cursor: pointer;
+  user-select: none;
 }
 
-.large {
+.key.large {
   grid-column: span 3;
+}
+
+.key > img {
+  width: 1.75em;
+  height: 1.75em;
+}
+
+.key:hover,
+.key:focus {
+  --lightness-offset: 10%;
+}
+
+.key.wrong {
+  --lightness: 34%;
+  color: white;
 }
