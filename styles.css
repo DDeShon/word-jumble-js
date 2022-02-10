@@ -34,3 +34,7 @@ body {
   background-color: hsl(0, 0%, 64%);
   /* color: white; */
 }
+
+.large {
+  grid-column: span 3;
+}
