@@ -27,9 +27,15 @@ body {
 }
 
 .tile {
+  display: flex;
   color: white;
   border: 0.05em solid black;
   border-radius: 0.25em;
+  font-size: 2em;
+  text-transform: uppercase;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
 }
 
 .keyboard {
