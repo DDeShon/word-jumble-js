@@ -15,6 +15,7 @@ body {
   font-size: clamp(0.5rem, 2.5vmin, 1.5rem);
 }
 
+/* Grid setup */
 .word-grid {
   display: grid;
   justify-content: center;
@@ -29,15 +30,36 @@ body {
 .tile {
   display: flex;
   color: white;
-  border: 0.05em solid black;
+  border: 0.05em solid hsl(0, 0%, 0%);
   border-radius: 0.25em;
   font-size: 2em;
   text-transform: uppercase;
   font-weight: bold;
   justify-content: center;
   align-items: center;
+  user-select: none;
 }
 
+.tile[data-state="active"] {
+  border-color: rgb(102, 133, 190);
+}
+
+.tile[data-state="wrong"] {
+  border: none;
+  background-color: hsl(0, 0%, 34%);
+}
+
+.tile[data-state="wrong-location"] {
+  border: none;
+  background-color: hsl(49, 51%, 47%);
+}
+
+.tile[data-state="correct"] {
+  border: none;
+  background-color: hsl(115, 29%, 43%);
+}
+
+/* Keyboard setup */
 .keyboard {
   display: grid;
   grid-template-columns: repeat(20, minmax(auto, 1.25em));
