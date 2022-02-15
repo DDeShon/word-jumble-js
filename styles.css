@@ -66,6 +66,7 @@ body {
   grid-auto-rows: 3em;
   gap: 0.25em;
   justify-content: center;
+  margin-bottom: 1rem;
 }
 
 .key {
