@@ -41,7 +41,7 @@ body {
 }
 
 .tile[data-state="active"] {
-  border-color: rgb(102, 133, 190);
+  border-color: rgb(255, 255, 255);
 }
 
 .tile[data-state="wrong"] {

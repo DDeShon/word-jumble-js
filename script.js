@@ -15289,10 +15289,18 @@ const dictionary = [
   "rural",
   "shave",
 ];
+const wordGrid = document.querySelector("[data-word-grid]");
+
+startInteraction();
 
 function startInteraction() {
   document.addEventListener("click", handleMouseClick);
   document.addEventListener("keydown", handleKeyPress);
+}
+
+function stopInteraction() {
+  document.removeEventListener("click", handleMouseClick);
+  document.removeEventListener("keydown", handleKeyPress);
 }
 
 function handleMouseClick(e) {
@@ -15327,4 +15335,17 @@ function handleKeyPress(e) {
     pressKey(e.key);
     return;
   }
+}
+
+function pressKey(key) {
+  const activeTiles = getActiveTiles();
+  if (activeTiles.length >= 5) return;
+  const nextTile = wordGrid.querySelector(":not([data-letter])");
+  nextTile.dataset.letter = key.toLowerCase();
+  nextTile.textContent = key;
+  nextTile.dataset.state = "active";
+}
+
+function getActiveTiles() {
+  return wordGrid.querySelectorAll('[data-state="active"]');
 }
