@@ -15315,7 +15315,7 @@ function handleMouseClick(e) {
     return;
   }
 
-  if (e.target.matches("[data-delete]")) {
+  if (e.target.matches("[data-delete]") || e.target.matches("img")) {
     deleteKey();
     return;
   }
