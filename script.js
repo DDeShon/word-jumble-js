@@ -15382,5 +15382,8 @@ function showAlert(message, duration = 1000) {
 
   setTimeout(() => {
     alert.classList.add("hide");
+    alert.addEventListener("transitionend", () => {
+      alert.remove();
+    });
   }, duration);
 }
