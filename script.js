@@ -15290,6 +15290,7 @@ const dictionary = [
   "shave",
 ];
 const wordGrid = document.querySelector("[data-word-grid]");
+const alertContainer = document.querySelector("[data-alert-container]");
 const WORD_LENGTH = 5;
 const offsetFromDate = new Date(2022, 1, 1);
 const msOffset = Date.now() - offsetFromDate;
@@ -15363,11 +15364,23 @@ function deleteKey() {
 function submitGuess() {
   const activeTiles = [...getActiveTiles()];
   if (activeTiles.length !== WORD_LENGTH) {
-    showAlert("Not enough lettrs");
+    showAlert("Not enough letters");
     shakeTiles(activeTiles);
   }
 }
 
 function getActiveTiles() {
   return wordGrid.querySelectorAll('[data-state="active"]');
+}
+
+function showAlert(message, duration = 1000) {
+  const alert = document.createElement("div");
+  alert.textContent = message;
+  alert.classList.add("alert");
+  alertContainer.prepend(alert);
+  if (duration == null) return;
+
+  setTimeout(() => {
+    alert.classList.add("hide");
+  }, duration);
 }
