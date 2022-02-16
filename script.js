@@ -15295,7 +15295,6 @@ const offsetFromDate = new Date(2022, 1, 1);
 const msOffset = Date.now() - offsetFromDate;
 const dayOffset = msOffset / 1000 / 60 / 60 / 24;
 const targetWord = targetWords[Math.floor(dayOffset)];
-console.log(dayOffset);
 
 startInteraction();
 
@@ -15361,7 +15360,13 @@ function deleteKey() {
   delete lastTile.dataset.letter;
 }
 
-function submitGuess() {}
+function submitGuess() {
+  const activeTiles = [...getActiveTiles()];
+  if (activeTiles.length !== WORD_LENGTH) {
+    showAlert("Not enough lettrs");
+    shakeTiles(activeTiles);
+  }
+}
 
 function getActiveTiles() {
   return wordGrid.querySelectorAll('[data-state="active"]');
