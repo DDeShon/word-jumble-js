@@ -15291,6 +15291,11 @@ const dictionary = [
 ];
 const wordGrid = document.querySelector("[data-word-grid]");
 const WORD_LENGTH = 5;
+const offsetFromDate = new Date(2022, 1, 1);
+const msOffset = Date.now() - offsetFromDate;
+const dayOffset = msOffset / 1000 / 60 / 60 / 24;
+const targetWord = targetWords[Math.floor(dayOffset)];
+console.log(dayOffset);
 
 startInteraction();
 
@@ -15315,7 +15320,7 @@ function handleMouseClick(e) {
     return;
   }
 
-  if (e.target.matches("[data-delete]") || e.target.matches("img")) {
+  if (e.target.matches("[data-delete]")) {
     deleteKey();
     return;
   }
@@ -15355,6 +15360,8 @@ function deleteKey() {
   delete lastTile.dataset.state;
   delete lastTile.dataset.letter;
 }
+
+function submitGuess() {}
 
 function getActiveTiles() {
   return wordGrid.querySelectorAll('[data-state="active"]');
