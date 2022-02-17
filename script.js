@@ -15372,7 +15372,7 @@ function submitGuess() {
     return word + tile.dataset.letter;
   }, "");
 
-  if (!dictionary.includes(guess)) {
+  if (!dictionary.includes(guess) && activeTiles.length === WORD_LENGTH) {
     showAlert("Word is not a valid option");
     shakeTiles(activeTiles);
     return;
