@@ -38,6 +38,7 @@ body {
   justify-content: center;
   align-items: center;
   user-select: none;
+  transition: transform 250ms linear;
 }
 
 .tile.shake {
@@ -45,7 +46,7 @@ body {
 }
 
 .tile.flip {
-  background: red;
+  transform: rotateX(90deg);
 }
 
 @keyframes shake {

@@ -15390,6 +15390,20 @@ function flipTiles(tile, index, array, guess) {
   setTimeout(() => {
     tile.classList.add("flip");
   }, (index * FLIP_ANIMATION_DURATION) / 2);
+
+  tile.addEventListener("transitionend", () => {
+    tile.classList.remove("flip");
+    if (targetWord[index] === letter) {
+      tile.dataset.state = "correct";
+      key.classList.add("correct");
+    } else if (targetWord.includes(letter)) {
+      tile.dataset.state = "wrong-location";
+      key.classList.add("wrong-location");
+    } else {
+      tile.dataset.state = "wrong";
+      key.classList.add("wrong");
+    }
+  });
 }
 
 function getActiveTiles() {
