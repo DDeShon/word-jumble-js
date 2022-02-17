@@ -15367,6 +15367,16 @@ function submitGuess() {
     showAlert("Not enough letters");
     shakeTiles(activeTiles);
   }
+
+  const guess = activeTiles.reduce((word, tile) => {
+    return word + tile.dataset.letter;
+  }, "");
+
+  if (!dictionary.includes(guess)) {
+    showAlert("Word is not a valid option");
+    shakeTiles(activeTiles);
+    return;
+  }
 }
 
 function getActiveTiles() {
