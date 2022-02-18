@@ -15369,6 +15369,7 @@ function submitGuess() {
   if (activeTiles.length !== WORD_LENGTH) {
     showAlert("Not enough letters");
     shakeTiles(activeTiles);
+    return;
   }
 
   const guess = activeTiles.reduce((word, tile) => {
@@ -15456,10 +15457,22 @@ function shakeTiles(tiles) {
 
 function checkWinLose(guess, tiles) {
   if (guess === targetWord) {
-    showAlert("You Win", 5000);
+    showAlert(
+      "  You Win! The correct word was " + targetWord.toUpperCase(),
+      5000
+    );
     danceTiles(tiles);
     stopInteraction();
     return;
+  }
+
+  const remainingTiles = wordGrid.querySelectorAll(":not([data-letter])");
+  if (remainingTiles.length === 0) {
+    showAlert(
+      "Game over. The correct word was " + targetWord.toUpperCase(),
+      null
+    );
+    stopInteraction();
   }
 }
 
